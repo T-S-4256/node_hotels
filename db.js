@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
-const mongooseUrl = 'mongodb://127.0.0.1:27017/hotels'
+require('dotenv').config();
+// const mongooseUrl = process.env.MONGODB_LOCAL_URL  
+const mongooseUrl = process.env.MONGODB_URL;
 
 mongoose.connect(mongooseUrl);
 
@@ -15,4 +17,4 @@ db.on('error', (err) => {
     console.log('UNABLE TO CONNECT WITH DATABASE :', err);
 })
 
-module.exports=db;
+module.exports = db;

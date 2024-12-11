@@ -1,25 +1,28 @@
-const express=require("express");
-const app=express();
-const db=require('./db');
+const express = require("express");
+const app = express();
+const db = require('./db');
+require('dotenv').config();
 
-const bodyParser=require('body-parser');
+const PORT=process.env.PORT || 3000
+
+
+const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
-
-
 app.get('/',(req,res)=>{
-    res.send("THIS IS MY HOME PAGE!");
+    res.send("THIS IS MY HOME PAGE.");
 })
 
 
 
+const personRouter = require("./routes/personRoutes");
+app.use('/person', personRouter);
 
 
+const menuRouter = require("./routes/menuRoutes");
+app.use('/menu', menuRouter);
 
 
-
-
-
-app.listen(3000,()=>{
-    console.log("SERVER IS RUNNING ON THE PORT NO : 3000");
+app.listen(PORT, () => {
+    console.log(`SERVER IS RUNNING ON THE PORT NO : ${PORT}`);
 })
