@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const mongooseUrl = 'mongodb://127.0.0.1:27017'
+const mongooseUrl = 'mongodb://127.0.0.1:27017/hotels'
 
 mongoose.connect(mongooseUrl);
 
